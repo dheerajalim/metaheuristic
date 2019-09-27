@@ -66,9 +66,7 @@ def optimal_route(random_vertex_list, unattended_vertex, vertex_coordinates):
         #selecting a random vertex from unattended_vertex list
         random_unattended_vertex = random.choice(unattended_vertex)
 
-        #TODO : Calculate the distance of the random_unattended_vertex from rach vertex in random_vertex_list
-
-        # Calculating the Euclidean Distane
+        # Calculating the Euclidean Distance
 
         for element in random_vertex_list:
             coord_a_x = vertex_coordinates[element-1][1]
@@ -79,16 +77,16 @@ def optimal_route(random_vertex_list, unattended_vertex, vertex_coordinates):
             # print(coord_a_x,coord_b_x)
             # print(coord_a_y,coord_b_y)
 
-            weight = round(math.sqrt((coord_a_x - coord_b_x) ** 2 + (coord_a_y - coord_b_y) ** 2))
+            weight = round(math.sqrt((coord_a_x - coord_b_x) ** 2 + (coord_a_y - coord_b_y) ** 2)) # Euclidean Distance
 
-            weight_list.append(weight)
+            weight_list.append(weight) # Adding all the weight to the weight_list
 
-        final_weight = min(weight_list)
-        min_distance_loc  = weight_list.index(final_weight)
-        random_vertex_list.insert(min_distance_loc+1, random_unattended_vertex)
+        final_weight = min(weight_list)  # Finding out the minimum weight between the vertexes
+        min_distance_loc = weight_list.index(final_weight) # Extracts the index value of the min weight
+        random_vertex_list.insert(min_distance_loc+1, random_unattended_vertex) # Adding the vertex with shortest distance to the random_vertex_list
 
-        shortest_route_weight += final_weight
-        unattended_vertex.remove(random_unattended_vertex)
+        shortest_route_weight += final_weight  # Calculates the total weight of the optimal route
+        unattended_vertex.remove(random_unattended_vertex)  # Removing the already used vertex
 
     print("Optimal Route Weight: ", shortest_route_weight )
     print("Optimal Route:" , random_vertex_list)
@@ -98,9 +96,9 @@ def optimal_route(random_vertex_list, unattended_vertex, vertex_coordinates):
 
 def generate_tsp(shortest_route_weight, random_vertex_list, filename):
     with open(filename, 'w') as file:
-        file.write(str(shortest_route_weight)+'\n')
+        file.write(str(shortest_route_weight)+'\n')  # Adding the total weight of the optimal route in file
         for route_number in random_vertex_list:
-            file.write(str(route_number))
+            file.write(str(route_number))  # Adding the vertices as per the route in the file
             file.write('\n')
 
 
