@@ -104,9 +104,11 @@ def generate_tsp(shortest_route_weight, random_vertex_list, filename):
             file.write('\n')
 
 
-random_vertex_list, unattended_vertex, vertex_coordinates = vertex_generation('inst-0.tsp')
-shortest_route_weight, random_vertex_list = optimal_route(random_vertex_list, unattended_vertex, vertex_coordinates)
-generate_tsp(shortest_route_weight, random_vertex_list,'sol_1.tsp')
+# Adding the main class
+if __name__ == '__main__':
+    random_vertex_list, unattended_vertex, vertex_coordinates = vertex_generation('inst-0.tsp')
+    shortest_route_weight, random_vertex_list = optimal_route(random_vertex_list, unattended_vertex, vertex_coordinates)
+    generate_tsp(shortest_route_weight, random_vertex_list,'sol_1.tsp')
 
 
 
