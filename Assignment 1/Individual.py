@@ -1,5 +1,3 @@
-
-
 """
 Basic TSP Example
 file: Individual.py
@@ -21,7 +19,10 @@ class Individual:
         self.solution   = _solution
 
         self.genes = list(self.data.keys())
-
+        """
+        if self.solution == 0 , generated population randomly
+        if self.solution == 1 , generated population heuristically (K nearest Neighbour)
+        """
         if self.solution == 0:
             for i in range(0, self.genSize):
                 n1 = random.randint(0, self.genSize-1)
@@ -31,9 +32,6 @@ class Individual:
                 self.genes[n1] = tmp
 
         elif self.solution == 1:
-            # TODO : To create population with Heuristic approach
-            tCost = 0
-
             n1 = random.randint(0, self.genSize - 1)  # Selecting the random index value from the genSize
             city_list = [self.genes[n1]]  # Creating the Starting Point for the Route
             del self.genes[n1]   # Removing the Element from the Chromosome
@@ -95,4 +93,3 @@ class Individual:
         self.fitness    = self.euclideanDistance(self.genes[0], self.genes[len(self.genes)-1])
         for i in range(0, self.genSize-1):
             self.fitness += self.euclideanDistance(self.genes[i], self.genes[i+1])
-
