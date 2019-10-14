@@ -1,9 +1,6 @@
-
-
 """
 Author: Dheeraj Alimchandani
 file: TSP_R00182505
-Rename this file to TSP_x.py where x is your student number 
 """
 
 import random
@@ -12,7 +9,7 @@ import sys
 import time
 import itertools
 
-myStudentNum = 'R00182505' # Replace 12345 with your student number
+myStudentNum = 'R00182505'
 random.seed(myStudentNum)
 
 class BasicTSP:
@@ -21,7 +18,6 @@ class BasicTSP:
         """
         Parameters and general variables
         """
-
         self.population     = []
         self.matingPool     = []
         self.matingPool_sus = {}
@@ -35,7 +31,7 @@ class BasicTSP:
         self.data           = {}
 
         """
-        Parameters for the all available methods
+        Parameters for running Genetic Algorithm with different combination
         """
         self.initialSolution = _initialSolution
         self.selection = _selection
@@ -44,7 +40,6 @@ class BasicTSP:
 
         self.readInstance()
         self.initPopulation()
-
 
     def readInstance(self):
         """
@@ -61,8 +56,10 @@ class BasicTSP:
     def initPopulation(self):
         """
         Creating random/heuristic individuals in the population
+        self.initialSolution == 0 implies the initial population is generated using Random selection Approach
+        self.initialSolution == 1 implies the initial population is generated using Heuristic Approach
         """
-        # TODO : To create population with Heuristic approach - Done
+
         for i in range(0, self.popSize):
             individual = Individual(self.genSize, self.data, self.initialSolution)
             individual.computeFitness()
@@ -74,17 +71,21 @@ class BasicTSP:
                 self.best = ind_i.copy()
         print ("Best initial sol: ",self.best.getFitness())
 
+        # Writing the details into a file.
         file.write(f'Best initial sol: {self.best.getFitness()}')
         file.write('\n')
 
-
-
     def updateBest(self, candidate):
-        # print('Candidate Fitness = ',candidate.getFitness())
+        """
+        Updates the best candidate's fitness in self.best
+        :param candidate: Object of Individual Class
+        :return: None
+        """
         if self.best == None or candidate.getFitness() < self.best.getFitness():
             self.best = candidate.copy()
             # print ("iteration: ",self.iteration, "best: ",self.best.getFitness(), "path: ", self.best.genes)
             print ("iteration: ",self.iteration, "best: ",self.best.getFitness())
+
             file.write(f'iteration: {self.iteration} best: {self.best.getFitness()}')
             file.write('\n')
         # else:
@@ -101,48 +102,67 @@ class BasicTSP:
 
     def stochasticUniversalSampling(self):
         """
-        Your stochastic universal sampling Selection Implementation
+        Implementation of Stochastic Universal Sampling
+        :return: Two selected parents from the mating pool generated using selection probability
         """
-        # TODO : Need to implement the Selection Probability to generate Mating Pool (Check: stochasticUniversalSampling)
 
-        # Need to select two Parents
-        N_parent = 2
+        N_parent = 2                    # Need to select two Parents
         distance_pointers = 1/N_parent
-        indA_pointer = random.uniform(0,distance_pointers)
-        indB_pointer = indA_pointer + distance_pointers
+        indA_pointer = random.uniform(0,distance_pointers) # Selection of random starting pointer
+        indB_pointer = indA_pointer + distance_pointers    # Selection of 2nd pointer
+
+        # print(self.matingPool_sus)
+        # print(indA_pointer)
+        # print(indB_pointer)
+        # print(self.ind_selection_range)
 
         parent_test = True
-        for ind,pointer in self.matingPool_sus.items():
+        for pointer in self.ind_selection_range:
             if parent_test:
                 if indA_pointer < pointer:
-                    parent_a = ind
+
+                    parent_a = self.population[self.ind_selection_range.index(pointer)]
                     parent_test = False
-                    continue
+
             if indB_pointer < pointer:
-                parent_b = ind
+                parent_b = self.population[self.ind_selection_range.index(pointer)]
                 break
+
+        # parent_test = True
+        # for ind,pointer in self.matingPool_sus.items():
+        #     if parent_test:
+        #         if indA_pointer < pointer:
+        #             parent_a = ind
+        #             parent_test = False
+        #             continue
+        #     if indB_pointer < pointer:
+        #         parent_b = ind
+        #         break
 
         return [parent_a, parent_b]
 
     def uniformCrossover(self, indA, indB):
+
         """
-        Your Uniform Crossover Implementation
+        :param indA: Parent A
+        :param indB:  Parent B
+        :return: Returns 2 offsprings after perfroming uniform Crossover on the Parent A and B
         """
-        # pos_list : Creating a list to contain the randomly selected locations that will not change.
-        # Selecting 4 random locations
-        pos_list = []
-        for num in range(0, 4):
-            pos_list.append(random.randint(0, self.genSize  - 1))
+
+        pos_list = []  # Creating a list to contain the randomly selected locations that will not change.
+
+        pos_nochange = random.randint(0,self.genSize)
+        for num in range(0, pos_nochange):
+            pos_list.append(random.randint(0, self.genSize  - 1))   # Selecting pos_nochange random locations
 
         # Initializing the offspring list with -1 in order to fill the changeable genes
         offspring_A = list(itertools.repeat(-1, self.genSize))
         offspring_B = list(itertools.repeat(-1, self.genSize))
 
         # Updating the offsprings with the genes that are non changeable
-        for x in range(0, self.genSize):
-            if x in pos_list:
-                offspring_A[x] = indA.genes[x]
-                offspring_B[x] = indB.genes[x]
+        for x in pos_list:
+            offspring_A[x] = indA.genes[x]
+            offspring_B[x] = indB.genes[x]
 
         # Updating the offsprings with the genes from alternative parent that are not already present in the offspring
         for item in indB.genes:
@@ -159,28 +179,23 @@ class BasicTSP:
         for i in range(0, self.genSize):
             child_a.genes[i] = offspring_A[i]
             child_b.genes[i] = offspring_B[i]
-
         return child_a, child_b
 
     def pmxCrossover(self, indA, indB):
         """
-        Your PMX Crossover Implementation
+        :param indA: Parent A
+        :param indB: Parent B
+        :return: Returns 2 offsprings after performing PMX Crossover on the Parent A and B
         """
-        # print('Parent A = ', indA.genes)
-        # print('Parent B = ', indB.genes)
-
         # Taking the random indexes to select genes that will reverse in the offspring
         indexB = random.randint(0, self.genSize - 1)
         indexA = random.randint(0, indexB)
 
-        # print('Index A', indexA)
-        # print('Index B', indexB)
-
         # Creating a mapping space for the reversed genes:
-        self.map_indA = {}
-        self.map_indB = {}
+        map_indA = {}
+        map_indB = {}
 
-        # Creating the copy oof original Parent
+        # Creating the copy of original Parent
         indA_orig = indA.copy()
         indB_orig = indB.copy()
 
@@ -189,13 +204,10 @@ class BasicTSP:
             tmp = indA.genes[x]
             indA.genes[x] = indB.genes[x]
             indB.genes[x] = tmp
-            self.map_indA[indA.genes[x]] = indB.genes[x]
+            map_indA[indA.genes[x]] = indB.genes[x]
 
-        for key, value in self.map_indA.items():
-            self.map_indB[value] = key
-
-        # print('Parent A with Modification = ', indA.genes)
-        # print('Parent B with Modification = ', indB.genes)
+        for key, value in map_indA.items():
+            map_indB[value] = key
 
         # Replacing the genes with more than one occurrence to -1
         for i in range(0, self.genSize):
@@ -207,57 +219,87 @@ class BasicTSP:
                 if indB.genes.count(indB.genes[i]) > 1:
                     indB.genes[i] = -1
 
-        self.pmx_mapper(indA_orig, indA, 'A')
-        self.pmx_mapper(indB_orig, indB, 'B')
+        """
+        pmx_mapper function to handle the mapping cycle
+        """
+        self.pmx_mapper(indA_orig, indA, 'A',map_indA, map_indB)
+        self.pmx_mapper(indB_orig, indB, 'B', map_indA, map_indB)
 
         return indA, indB
 
-        #
-        #
-        # print('MAp A', self.map_indA)
-        # print('MAp B', self.map_indB)
-        #
-        # print('Offspring A = ', indA.genes)
-        # print('Offspring B = ', indB.genes)
-        # exit()
-
-    def pmx_mapper(self,ind_orig, ind, parent):
+    def pmx_mapper(self,ind_orig, ind, parent, map_indA, map_indB):
+        """
+        :param ind_orig: Original Parent
+        :param ind: Modified Parent
+        :param parent: Parent Type A or B
+        :param map_indA: Mapping for Parent A
+        :param map_indB: Mapping for Paren B
+        :return: Updated individual after the mapping cycle procedure
+        """
 
         for x in range(0, self.genSize):
             mapping_loop = True
             if ind.genes[x] == -1:
-
                 if parent == 'A':
-                    mapper = self.map_indA[ind_orig.genes[x]]
+                    mapper = map_indA[ind_orig.genes[x]]
                 elif parent == 'B':
-                    mapper = self.map_indB[ind_orig.genes[x]]
-
-                while mapping_loop:
+                    mapper = map_indB[ind_orig.genes[x]]
+                while mapping_loop:                     # Searches for the appropriate cycle to be used
                     if mapper in ind.genes:
                         if parent == 'A':
-                            mapper = self.map_indA[mapper]
+                            mapper = map_indA[mapper]
                         elif parent == 'B':
-                            mapper = self.map_indB[mapper]
+                            mapper = map_indB[mapper]
                     else:
                         mapping_loop = False
 
                 ind.genes[x] = mapper
 
-
-
     def reciprocalExchangeMutation(self, indA, indB):
         """
-        Your Reciprocal Exchange Mutation implementation
+         Mutate an individual by swaping two cities with certain probability (i.e., mutation rate)
+        :param indA: Parent A
+        :param indB: Parent B
+        :return: Offspring with mutation performed on it
         """
-        # TODO : Implemnetation of Reciprocal Mutation - Done
+        # self.mutation(indA, indB)
 
-        self.mutation(indA, indB)
+        # Checks if the mutation rate is acheived
+        if random.random() > self.mutationRate:
+            indA.computeFitness()
+            self.updateBest(indA)
+            indB.computeFitness()
+            self.updateBest(indB)
+            return
+
+        indexA = random.randint(0, self.genSize - 1)
+        indexB = random.randint(0, self.genSize - 1)
+
+        # This method is used to swap the values in the Reciprocal Mutation process for the Child
+        self.reciprocal_mutation_flip(indA, indexA, indexB)
+        self.reciprocal_mutation_flip(indB, indexA, indexB)
+
+    def reciprocal_mutation_flip(self, ind, indexA, indexB):
+        """
+        This method is used to swap the values in the Reciprocal Mutation process for the Child
+        :param ind: Parent
+        :param indexA: Index location 1
+        :param indexB: Index location 2
+        :return: offspring with cities swapped
+        """
+        tmp = ind.genes[indexA]
+        ind.genes[indexA] = ind.genes[indexB]
+        ind.genes[indexB] = tmp
+        ind.computeFitness()
+        self.updateBest(ind)
 
     def inversionMutation(self, indA, indB):
         """
-        Your Inversion Mutation implementation
+        Mutate the individual by inversing the order of cities between two points
+        :param indA: Parent A
+        :param indB: Parent B
+        :return: 2 Offspring after mutation
         """
-        # TODO : Implemnetation of Inversion Mutation - Done
 
         if random.random() > self.mutationRate:
             indA.computeFitness()
@@ -288,6 +330,7 @@ class BasicTSP:
         self.updateBest(indB)
 
     def crossover(self, indA, indB):
+        # NOT USED
         """
         Executes a 1 order crossover and returns a new individual
         """
@@ -317,8 +360,8 @@ class BasicTSP:
 
         return child_obj
 
-
     def mutation(self, indA, indB):
+        # NOT USED
         # This works as per the reciprocal Exchange
         """
         Mutate an individual by swaping two cities with certain probability (i.e., mutation rate)
@@ -337,74 +380,73 @@ class BasicTSP:
         self.reciprocal_mutation_flip(indA, indexA, indexB)
         self.reciprocal_mutation_flip(indB, indexA, indexB)
 
-    # This method is used to swap the values in the Reciprocal Mutation process for the Child
-    def reciprocal_mutation_flip(self, ind, indexA, indexB):
-        tmp = ind.genes[indexA]
-        ind.genes[indexA] = ind.genes[indexB]
-        ind.genes[indexB] = tmp
-        ind.computeFitness()
-        self.updateBest(ind)
-
     def updateMatingPool(self):
         """
         Updating the mating pool before creating a new generation
-        """
 
+        if self.selection == 0 : Mating pool generated using Random Selection
+        if self.selection == 1: Mating pool generated using Stochastic Universal Sampling
+        """
         if self.selection == 0 :
             self.matingPool = []
             for ind_i in self.population:
                 self.matingPool.append(ind_i.copy())
 
         elif self.selection == 1:
-            # TODO : Create Mating Pool based on stochastic selection
-            self.fitness_list = []
-            self.minimize_fitness_list = []
-            self.selection_probability_fitness_list = []
+            # self.matingPool_sus = {}
+            fitness_list = []
+            minimize_fitness_list = []
+            selection_probability_fitness_list = []
+
+            # Creating a list to hold the fitness of each ind in population
             for ind_i in self.population:
-                self.fitness_list.append(ind_i.getFitness())
+                fitness_list.append(ind_i.getFitness())
 
-            max_fitness = max(self.fitness_list) + 1 # Adding 1 to avoid value to turn 0 on subtraction
+            # Getting the max fitness from the list of ind fitness
+            max_fitness = max(fitness_list) + 1 # Adding 1 to avoid value to turn 0 on subtraction
 
-            for fitness in self.fitness_list:
-                self.minimize_fitness_list.append(max_fitness - fitness)
+            # Minimizing the fitness of ind
+            for fitness in fitness_list:
+                minimize_fitness_list.append(max_fitness - fitness)
 
-            fitness_sum = sum(self.minimize_fitness_list)
+            fitness_sum = sum(minimize_fitness_list)
 
-            for fitness in self.minimize_fitness_list:
-                self.selection_probability_fitness_list.append(fitness/fitness_sum)
+            # Generating the Selection probability for the individual
+            for fitness in minimize_fitness_list:
+                selection_probability_fitness_list.append(fitness/fitness_sum)
 
-            # print(self.fitness_list)
-            # print(self.minimize_fitness_list)
-            # print(self.selection_probability_fitness_list)
-            # print(max(self.selection_probability_fitness_list))
+            # Generating the selection range of the ind
+            self.ind_selection_range = [selection_probability_fitness_list[0]]
 
-            ind_selection_range = []
-            ind_selection_range.append(self.selection_probability_fitness_list[0])
-            for fitness in range(1,len(self.selection_probability_fitness_list)):
-                ind_selection_range.append(ind_selection_range[fitness-1] + self.selection_probability_fitness_list[fitness])
+            for fitness in range(1,len(selection_probability_fitness_list)):
+                self.ind_selection_range.append(self.ind_selection_range[fitness-1] + selection_probability_fitness_list[fitness])
 
-            # print(ind_selection_range)
-
+            # print('initial_mating = ', self.matingPool_sus)
             # Now we need to create a dictionary of mating pool with each individual and its selection probability
-
-            for i in range(0,len(self.population)):
-                self.matingPool_sus[self.population[i]] = ind_selection_range[i]
+            # print('population = ', self.population)
+            # for i in range(0,len(self.population)):
+            #     self.matingPool_sus[self.population[i]] = ind_selection_range[i]
+            # print('Mating Pool = ',len(self.matingPool_sus))
 
 
     def newGeneration(self):
         """
         Creating a new generation
         1. Selection
+            a. randomSelection
+            b. stochasticUniversalSampling
         2. Crossover
+            a. uniformCrossover
+            b. pmxCrossover
         3. Mutation
+            a. inversionMutation
+            b. reciprocalExchangeMutation
         """
-
-        for i in range(0, len(self.population),2):
+        offspring_population = []
+        # for i in range(0, len(self.population), 2):
+        for i in range(0, len(self.population)):
             """
-            Depending of your experiment you need to use the most suitable algorithms for:
-            1. Select two candidates
-            2. Apply Crossover
-            3. Apply Mutation
+            Random Selection or SUS selection
             """
             if self.selection == 0:
                 partnerA, partnerB = self.randomSelection()
@@ -412,45 +454,37 @@ class BasicTSP:
             elif self.selection == 1:
                 partnerA, partnerB = self.stochasticUniversalSampling()
 
-            ##Crossover
+            """
+            Uniform Crossover or PMX crossover
+            """
             if self.crossoverType == 0:
-                # TODO : Uniform Crossover - Done
-                start = time.time()
                 child_a, child_b = self.uniformCrossover(partnerA, partnerB)
-                # print('crossover', time.time() - start)
-
 
             elif self.crossoverType == 1:
-                # TODO : PMX Crossover - Done
-                start = time.time()
                 child_a, child_b = self.pmxCrossover(partnerA, partnerB)
-                # print('crossover', time.time() - start)
 
-            # start = time.time()
-            # child = self.crossover(partnerA, partnerB)
-            # print('crossover', time.time() - start)
-
-            ##Mutation
-            # self.mutation(child)
-            # self.reciprocalExchangeMutation(child)
+            """
+            Inversion or Reciprocal Exchange Mutation
+            """
             if self.mutationType == 0:
-                start = time.time()
                 self.inversionMutation(child_a, child_b)
-                # print('Mutation', time.time() - start)
 
             elif self.mutationType == 1:
-                start = time.time()
                 self.reciprocalExchangeMutation(child_a, child_b)
-                # print('Mutation', time.time() - start)
 
-                # print('Mutation', time.time() - start)
+            """
+            Generation of new population by adding the two children
+            """
 
-            # self.inversionMutation(child)
+            # self.population[i] = child_a
+            # self.population[i+1] = child_b
 
-            # Generation of new population by adding the child
+            offspring_population.append(child_a)
+            offspring_population.append(child_b)
 
-            self.population[i] = child_a
-            self.population[i+1] = child_b
+        for i in range(0, len(self.population)):
+            self.population[i] = random.choice(offspring_population)
+
 
     def GAStep(self):
         """
@@ -458,12 +492,8 @@ class BasicTSP:
         1. Updating mating pool with current population
         2. Creating a new Generation
         """
-
         self.updateMatingPool()
-        start = time.time()
         self.newGeneration()
-        end = time.time()
-        # print('total = ', end-start)
 
     def search(self):
         """
@@ -479,13 +509,12 @@ class BasicTSP:
         print ("Total iterations: ",self.iteration)
         print ("Best Solution: ", self.best.getFitness())
 
+        # Writing the results to the file
         file.write(f'Total iterations: {self.iteration}')
         file.write('\n')
         file.write(f'Best Solution: {self.best.getFitness()}')
         file.write('\n')
         file.write('====================================================== \n')
-
-
 
 # if len(sys.argv) < 2:
 #     print ("Error - Incorrect input")
@@ -494,7 +523,7 @@ class BasicTSP:
 
 
 # problem_file = sys.argv[1]
-problem_file = "inst-13.tsp"
+problem_file = "inst-0.tsp"
 
 # ga = BasicTSP(problem_file, 300, 0.1, 500)
 # ga = BasicTSP(problem_file, 100, 0.1, 500, 0, 0, 0, 0)   # Initial Random, Selection Random, Reciprocal = 1
@@ -504,39 +533,42 @@ problem_file = "inst-13.tsp"
 
 
 ####TEST on inst-01#########
-file = open('test_run_test.txt', 'w')
-file.write('ga = BasicTSP(problem_file, 100, 0.1, 500, 1, 0, 0, 0) \n')
+file = open('test_run.txt', 'a')
+
+
+file.write(f'ga = BasicTSP({problem_file}, 100, 0.1, 500, 0, 0, 0, 0) => Configuration 1 \n')
+ga = BasicTSP(problem_file, 100, 0.1, 500, 0, 0, 0, 0)
+ga.search()
+
+file.write(f'ga = BasicTSP({problem_file}, 100, 0.1, 500, 0, 0, 1, 1) => Configuration 2 \n')
+ga = BasicTSP(problem_file, 100, 0.1, 500, 0, 0, 1, 1)
+ga.search()
+
+file.write(f'ga = BasicTSP({problem_file}, 100, 0.1, 500, 0, 1, 0, 1) => Configuration 3 \n')
+ga = BasicTSP(problem_file, 100, 0.1, 500, 0, 1, 0, 1)
+ga.search()
+
+file.write(f'ga = BasicTSP({problem_file}, 100, 0.1, 500, 0, 1, 1, 1) => Configuration 4 \n')
+ga = BasicTSP(problem_file, 100, 0.1, 500, 0, 1, 1, 1)
+ga.search()
+
+
+file.write(f'ga = BasicTSP({problem_file}, 100, 0.1, 500, 0, 1, 1, 0) => Configuration 5 \n')
+ga = BasicTSP(problem_file, 100, 0.1, 500, 0, 1, 1, 0)
+ga.search()
+
+file.write(f'ga = BasicTSP({problem_file}, 100, 0.1, 500, 0, 1, 0, 0) => Configuration 6 \n')
 ga = BasicTSP(problem_file, 100, 0.1, 500, 0, 1, 0, 0)
 ga.search()
 
-# file.write('ga = BasicTSP(problem_file, 100, 0.1, 200, 0, 0, 0, 0) \n')
-# ga = BasicTSP(problem_file, 100, 0.1, 200, 0, 0, 0, 0)
-# ga.search()
+file.write(f'ga = BasicTSP({problem_file}, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 \n')
+ga = BasicTSP(problem_file, 100, 0.1, 500, 1, 1, 1, 1)
+ga.search()
 
-# file.write('ga = BasicTSP(problem_file, 100, 0.1, 200, 1, 0, 0, 0) \n')
-# ga = BasicTSP(problem_file, 100, 0.1, 200, 1, 0, 0, 0)
-# ga.search()
-#
-# file.write('ga = BasicTSP(problem_file, 100, 0.1, 200, 0, 1, 0, 0) \n')
-# ga = BasicTSP(problem_file, 100, 0.1, 200, 0, 1, 0, 0)
-# ga.search()
-#
-#
-# file.write('ga = BasicTSP(problem_file, 100, 0.1, 200, 1, 1, 0, 0) \n')
-# ga = BasicTSP(problem_file, 100, 0.1, 200, 1, 1, 0, 0)
-# ga.search()
-#
-# file.write('ga = BasicTSP(problem_file, 100, 0.1, 200, 1, 1, 1, 1) \n')
-# ga = BasicTSP(problem_file, 100, 0.1, 200, 1, 1, 1, 1)
-# ga.search()
-#
-# file.write('ga = BasicTSP(problem_file, 100, 0.1, 200, 1, 0, 1, 1) \n')
-# ga = BasicTSP(problem_file, 100, 0.1, 200, 1, 0, 1, 1)
-# ga.search()
-#
-# file.write('ga = BasicTSP(problem_file, 100, 0.1, 200, 0, 0, 1, 1) \n')
-# ga = BasicTSP(problem_file, 100, 0.1, 200, 0, 0, 1, 1)
-# ga.search()
+file.write(f'ga = BasicTSP({problem_file}, 100, 0.1, 500, 1, 1, 0, 0) => Configuration 8 \n')
+ga = BasicTSP(problem_file, 100, 0.1, 500, 1, 1, 0, 0)
+ga.search()
+
 #
 # file.write('ga = BasicTSP(problem_file, 100, 0.1, 200, 0, 1, 1, 1) \n')
 # ga = BasicTSP(problem_file, 100, 0.1, 200, 0, 1, 1, 1)
