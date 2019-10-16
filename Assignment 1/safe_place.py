@@ -1,6 +1,7 @@
 """
 Author: Dheeraj Alimchandani
 file: TSP_R00182505
+Running on : 16/10/2019
 """
 
 import random
@@ -112,6 +113,11 @@ class BasicTSP:
         indA_pointer = random.uniform(0, distance_pointers)  # Selection of random starting pointer
         indB_pointer = indA_pointer + distance_pointers  # Selection of 2nd pointer
 
+        # print(self.matingPool_sus)
+        # print(indA_pointer)
+        # print(indB_pointer)
+        # print(self.ind_selection_range)
+
         parent_test = True
         for pointer in self.ind_selection_range:
             if parent_test:
@@ -122,6 +128,17 @@ class BasicTSP:
             if indB_pointer < pointer:
                 parent_b = self.matingPool[self.ind_selection_range.index(pointer)]
                 break
+
+        # parent_test = True
+        # for ind,pointer in self.matingPool_sus.items():
+        #     if parent_test:
+        #         if indA_pointer < pointer:
+        #             parent_a = ind
+        #             parent_test = False
+        #             continue
+        #     if indB_pointer < pointer:
+        #         parent_b = ind
+        #         break
 
         return [parent_a, parent_b]
 
@@ -246,6 +263,7 @@ class BasicTSP:
         :param indB: Parent B
         :return: Offspring with mutation performed on it
         """
+        # self.mutation(indA, indB)
 
         # Checks if the mutation rate is acheived
         if random.random() > self.mutationRate:
@@ -375,6 +393,7 @@ class BasicTSP:
                 self.matingPool.append(ind_i.copy())
 
         elif self.selection == 1:
+
             self.matingPool = []
             for ind_i in self.population:
                 self.matingPool.append(ind_i.copy())
@@ -407,6 +426,13 @@ class BasicTSP:
                 self.ind_selection_range.append(
                     self.ind_selection_range[fitness - 1] + selection_probability_fitness_list[fitness])
 
+            # print('initial_mating = ', self.matingPool_sus)
+            # Now we need to create a dictionary of mating pool with each individual and its selection probability
+            # print('population = ', self.population)
+            # for i in range(0,len(self.population)):
+            #     self.matingPool_sus[self.population[i]] = ind_selection_range[i]
+            # print('Mating Pool = ',len(self.matingPool_sus))
+
     def newGeneration(self):
         """
         Creating a new generation
@@ -420,7 +446,8 @@ class BasicTSP:
             a. inversionMutation
             b. reciprocalExchangeMutation
         """
-
+        offspring_population = []
+        # for i in range(0, len(self.population)):
         for i in range(0, int(len(self.population)/2)):
 
             """
@@ -457,6 +484,12 @@ class BasicTSP:
             self.population[i*2] = child_a
             self.population[i*2 +1] = child_b
 
+            #offspring_population.append(child_a)
+            #offspring_population.append(child_b)
+
+        #for i in range(0, len(self.population)):
+            #self.population[i] = random.choice(offspring_population)
+
     def GAStep(self):
         """
         One step in the GA main algorithm
@@ -475,6 +508,7 @@ class BasicTSP:
         while self.iteration < self.maxIterations:
             self.GAStep()
             self.iteration += 1
+            # print(self.iteration)
 
         print("Total iterations: ", self.iteration)
         print("Best Solution: ", self.best.getFitness())

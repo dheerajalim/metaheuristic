@@ -1,0 +1,360 @@
+Varying the Mutation Rate : 0.5
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.5, 500, 0, 1, 0, 1) => Configuration 3 
+Best initial sol: 22660915.870452467
+iteration: 0 best: 22604678.736370705
+iteration: 5 best: 22583204.161646124
+iteration: 5 best: 22441360.763783216
+iteration: 9 best: 22195920.112185065
+iteration: 10 best: 22062591.21600817
+iteration: 33 best: 21723509.379292227
+iteration: 35 best: 21674206.988069613
+iteration: 51 best: 21618617.62783275
+iteration: 61 best: 20783223.80380686
+iteration: 78 best: 20683010.64875011
+iteration: 82 best: 20569383.46152084
+iteration: 91 best: 20259053.4491796
+iteration: 92 best: 20164256.199651755
+iteration: 106 best: 20082022.838174365
+iteration: 118 best: 19884666.331003327
+iteration: 129 best: 19844123.677051555
+iteration: 141 best: 19825675.042884123
+iteration: 142 best: 19603212.53612636
+iteration: 159 best: 19418754.461575773
+iteration: 173 best: 19238515.20061848
+iteration: 178 best: 18429310.843212195
+iteration: 216 best: 18357300.719867654
+iteration: 217 best: 18345908.531436156
+iteration: 224 best: 18310330.921127602
+iteration: 225 best: 18198868.119825594
+iteration: 236 best: 17718267.92858292
+iteration: 245 best: 17689308.04662446
+iteration: 252 best: 17477837.58340087
+iteration: 254 best: 17377915.2016834
+iteration: 264 best: 17156448.54243932
+iteration: 313 best: 17029314.31552145
+iteration: 315 best: 16693539.679313838
+iteration: 337 best: 16440039.224870205
+iteration: 383 best: 16370896.322553815
+iteration: 384 best: 16150567.851796279
+iteration: 392 best: 16076515.675498823
+iteration: 416 best: 15860568.729208393
+iteration: 422 best: 15811401.291260181
+iteration: 428 best: 15759704.51926421
+iteration: 435 best: 15722761.626876792
+iteration: 439 best: 15711694.334605323
+iteration: 441 best: 15663218.609019296
+iteration: 443 best: 15307087.056879122
+iteration: 481 best: 14999180.601240432
+Total iterations: 500
+Best Solution: 14999180.601240432
+====================================================== 
+Varying the Mutation Rate : 0.9
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.9, 500, 0, 1, 0, 1) => Configuration 3 
+Best initial sol: 22660915.870452467
+iteration: 1 best: 22400145.962207574
+iteration: 2 best: 22176850.889388796
+iteration: 4 best: 22023059.533092525
+iteration: 5 best: 21918974.128132787
+iteration: 22 best: 21869233.12190524
+iteration: 33 best: 21675758.87785179
+iteration: 37 best: 20823226.18993244
+iteration: 85 best: 20579529.608614765
+iteration: 115 best: 20174521.0910867
+iteration: 144 best: 20119912.998652216
+iteration: 152 best: 19832078.17564866
+iteration: 153 best: 19495751.498180863
+iteration: 169 best: 19472696.818626717
+iteration: 171 best: 19387276.796627324
+iteration: 180 best: 18973701.134993598
+iteration: 218 best: 18857774.57181564
+iteration: 223 best: 18820330.34109827
+iteration: 247 best: 18610843.706228305
+iteration: 273 best: 18496089.000304848
+iteration: 300 best: 18413948.371121988
+iteration: 321 best: 18360472.746851757
+iteration: 342 best: 18295719.29695442
+iteration: 412 best: 18293267.834480654
+iteration: 435 best: 17907374.739043012
+iteration: 479 best: 17417283.660934016
+Total iterations: 500
+Best Solution: 17417283.660934016
+====================================================== 
+Varying the Mutation Rate : 0.05
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.05, 500, 0, 1, 0, 1) => Configuration 3 
+Best initial sol: 22660915.870452467
+iteration: 3 best: 22476369.395745024
+iteration: 4 best: 22436026.515872933
+iteration: 5 best: 22391511.058103543
+iteration: 12 best: 21926210.273154497
+iteration: 15 best: 21870669.225846063
+iteration: 16 best: 21766698.122955333
+iteration: 23 best: 21696317.384754032
+iteration: 50 best: 21593348.744412117
+iteration: 70 best: 21510494.240731392
+iteration: 71 best: 21027746.236122426
+iteration: 118 best: 20661711.016333982
+iteration: 120 best: 20597525.671900008
+iteration: 135 best: 20310806.30356365
+iteration: 156 best: 20100133.192057222
+iteration: 158 best: 19987857.71099366
+iteration: 167 best: 19728302.08422973
+iteration: 168 best: 19714204.632425733
+iteration: 169 best: 19633669.435846236
+iteration: 176 best: 19557082.630514063
+iteration: 178 best: 19300781.236901097
+iteration: 194 best: 19138319.724699363
+iteration: 195 best: 18692633.95665063
+iteration: 208 best: 18600068.597862147
+iteration: 211 best: 18426543.49342592
+iteration: 212 best: 18179141.942223996
+iteration: 239 best: 18175117.42951316
+iteration: 240 best: 18061431.849905614
+iteration: 261 best: 18002542.359522514
+iteration: 262 best: 17711594.1468391
+iteration: 263 best: 17542039.91603331
+iteration: 272 best: 17192595.74390752
+iteration: 291 best: 16814058.687489025
+iteration: 305 best: 16560123.790833257
+iteration: 306 best: 16318989.642313115
+iteration: 350 best: 16189517.405317562
+iteration: 379 best: 16134557.623200743
+iteration: 385 best: 15836810.70420517
+iteration: 395 best: 15771253.30865667
+iteration: 416 best: 15521408.524284514
+iteration: 428 best: 15480315.684156625
+iteration: 432 best: 15245087.37073262
+iteration: 433 best: 15236164.957934955
+iteration: 433 best: 15008860.464760892
+iteration: 478 best: 14958310.399652224
+iteration: 479 best: 14866571.314067721
+Total iterations: 500
+Best Solution: 14866571.314067721
+====================================================== 
+Varying the Mutation Rate : 0.01
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.01, 500, 0, 1, 0, 1) => Configuration 3 
+Best initial sol: 22660915.870452467
+iteration: 2 best: 22613765.643845968
+iteration: 3 best: 22477502.453855965
+iteration: 4 best: 21930833.748603385
+iteration: 35 best: 21506682.034317438
+iteration: 37 best: 21206966.81226442
+iteration: 64 best: 20779105.300918814
+iteration: 69 best: 20742040.484289248
+iteration: 71 best: 20552714.986494422
+iteration: 80 best: 20395638.54902829
+iteration: 98 best: 20135058.418389868
+iteration: 116 best: 20059837.046763852
+iteration: 126 best: 20022166.37958603
+iteration: 127 best: 19982542.069821857
+iteration: 128 best: 19917996.856987353
+iteration: 134 best: 19807571.233613305
+iteration: 137 best: 19753480.220486026
+iteration: 150 best: 19697335.038038224
+iteration: 151 best: 19147782.687688664
+iteration: 159 best: 19045507.88436945
+iteration: 160 best: 18688546.50651912
+iteration: 188 best: 18607295.36467285
+iteration: 190 best: 18343961.662066754
+iteration: 199 best: 18166002.832179833
+iteration: 215 best: 17932621.497192476
+iteration: 221 best: 17891702.175415657
+iteration: 223 best: 17738892.471298724
+iteration: 250 best: 17562898.459849723
+iteration: 253 best: 17542580.114170574
+iteration: 257 best: 17411467.592496052
+iteration: 259 best: 17395017.196426522
+iteration: 263 best: 17058853.547354113
+iteration: 267 best: 16773387.946600609
+iteration: 271 best: 16675344.898626018
+iteration: 278 best: 16567794.311899194
+iteration: 282 best: 16364590.515466299
+iteration: 284 best: 16080272.1134017
+iteration: 289 best: 15886877.819380917
+iteration: 295 best: 15742930.973603956
+iteration: 299 best: 15738056.481170574
+iteration: 300 best: 15718602.46413125
+iteration: 301 best: 15561027.711913548
+iteration: 303 best: 15525508.15111745
+iteration: 304 best: 15355171.524351198
+iteration: 305 best: 15274620.43884859
+iteration: 308 best: 15104640.979428155
+iteration: 334 best: 15013068.22942931
+iteration: 340 best: 14821693.528144062
+iteration: 341 best: 14676883.15915899
+iteration: 342 best: 14450608.78499077
+iteration: 351 best: 14338138.268355781
+iteration: 354 best: 14335507.721863208
+iteration: 354 best: 14248267.42902552
+iteration: 356 best: 13957927.59131158
+iteration: 359 best: 13352771.91312406
+iteration: 362 best: 13199246.900616381
+iteration: 377 best: 13121099.117042998
+iteration: 403 best: 13000009.711904576
+iteration: 414 best: 12954556.986310968
+iteration: 415 best: 12934336.109419784
+iteration: 416 best: 12578797.781727757
+iteration: 426 best: 12560370.523834046
+iteration: 432 best: 12401008.162724288
+iteration: 439 best: 12318911.662537482
+iteration: 453 best: 12159729.92949957
+iteration: 458 best: 12036430.122631846
+iteration: 471 best: 11975885.739952926
+iteration: 472 best: 11961275.773852153
+iteration: 473 best: 11854663.5133718
+iteration: 490 best: 11839342.808817986
+iteration: 499 best: 11727191.618828967
+Total iterations: 500
+Best Solution: 11727191.618828967
+====================================================== 
+Varying the Mutation Rate : 0.009
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.009, 500, 0, 1, 0, 1) => Configuration 3 
+Best initial sol: 22660915.870452467
+iteration: 2 best: 22613765.643845968
+iteration: 7 best: 22519536.866132416
+iteration: 7 best: 22311999.74118789
+iteration: 8 best: 22271628.94304373
+iteration: 10 best: 22006155.5821262
+iteration: 14 best: 22004123.51795365
+iteration: 35 best: 21595212.126587935
+iteration: 36 best: 21577184.399999447
+iteration: 43 best: 21550270.118319146
+iteration: 49 best: 21354570.931052644
+iteration: 59 best: 21126314.190496184
+iteration: 64 best: 20969558.13633778
+iteration: 67 best: 20685470.88086836
+iteration: 69 best: 20585440.545210265
+iteration: 75 best: 20476151.303947274
+iteration: 81 best: 19685201.983416382
+iteration: 103 best: 19483595.804364245
+iteration: 114 best: 19423128.169178117
+iteration: 115 best: 19384177.71510684
+iteration: 117 best: 19233485.791276526
+iteration: 122 best: 18532964.09688091
+iteration: 130 best: 18287112.03134222
+iteration: 131 best: 18182899.312617153
+iteration: 135 best: 18019175.40249544
+iteration: 138 best: 18007923.801394466
+iteration: 140 best: 18005606.26014561
+iteration: 140 best: 17920863.17957468
+iteration: 142 best: 17576248.83122687
+iteration: 146 best: 17565008.83422221
+iteration: 153 best: 17492929.32238533
+iteration: 154 best: 17335674.36035032
+iteration: 155 best: 17297811.146238185
+iteration: 156 best: 16695162.611133974
+iteration: 161 best: 16627098.72219281
+iteration: 175 best: 16273789.162038164
+iteration: 187 best: 16230023.244758489
+iteration: 189 best: 16140398.331755677
+iteration: 189 best: 16104245.938874617
+iteration: 191 best: 16037579.040063336
+iteration: 191 best: 15923883.613638513
+iteration: 194 best: 15856445.871761136
+iteration: 201 best: 15642020.985015022
+iteration: 214 best: 15608564.192084031
+iteration: 215 best: 15573667.82563816
+iteration: 217 best: 15565615.235229084
+iteration: 217 best: 15421181.817055533
+iteration: 218 best: 15417157.930373508
+iteration: 218 best: 15363295.698308798
+iteration: 220 best: 15224283.715134192
+iteration: 224 best: 14959394.445959462
+iteration: 251 best: 14934392.425141746
+iteration: 252 best: 14496442.87147174
+iteration: 271 best: 14317268.99041902
+iteration: 286 best: 14034177.13550578
+iteration: 292 best: 13909735.993626453
+iteration: 294 best: 13825978.313399585
+iteration: 306 best: 13519117.951937718
+iteration: 319 best: 13513247.133349927
+iteration: 319 best: 13436238.838678213
+iteration: 320 best: 13313223.765711498
+iteration: 326 best: 13299284.05215036
+iteration: 329 best: 12909442.77185896
+iteration: 384 best: 12704621.486927424
+iteration: 392 best: 12700310.16429246
+iteration: 408 best: 12545329.274038661
+iteration: 431 best: 12491909.236197194
+iteration: 431 best: 12426219.17388618
+iteration: 471 best: 12331252.369511522
+iteration: 484 best: 12209728.363015927
+iteration: 486 best: 12182951.934831554
+iteration: 486 best: 12121962.894937903
+iteration: 487 best: 11880680.184743624
+iteration: 491 best: 11674862.679554809
+iteration: 494 best: 11412462.914951555
+Total iterations: 500
+Best Solution: 11412462.914951555
+====================================================== 
+Varying the Mutation Rate : 0.99
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.99, 500, 0, 1, 0, 1) => Configuration 3 
+Best initial sol: 22660915.870452467
+iteration: 0 best: 22633057.91689763
+iteration: 3 best: 22190679.523730233
+iteration: 6 best: 21790843.56087333
+iteration: 10 best: 21751902.753848895
+iteration: 13 best: 21580330.298109427
+iteration: 69 best: 21347073.457282502
+iteration: 124 best: 21077212.379132222
+iteration: 174 best: 20925555.696673874
+iteration: 174 best: 20497269.377564874
+iteration: 213 best: 20378006.556654762
+iteration: 228 best: 20222736.475296516
+iteration: 249 best: 20195399.684307367
+iteration: 277 best: 20017701.59049306
+iteration: 288 best: 19939977.372565944
+iteration: 289 best: 19733745.062973846
+iteration: 320 best: 19180343.127202995
+iteration: 346 best: 19005777.857721977
+iteration: 347 best: 18814097.48973488
+iteration: 366 best: 18801028.170104694
+iteration: 398 best: 18731859.9515356
+iteration: 400 best: 18541190.90988512
+iteration: 409 best: 18293642.73900239
+iteration: 417 best: 18282666.594462182
+iteration: 421 best: 18096628.970355455
+iteration: 450 best: 17932165.423125982
+iteration: 453 best: 17810279.747564286
+iteration: 454 best: 17649132.787458103
+iteration: 480 best: 17384205.053112
+Total iterations: 500
+Best Solution: 17384205.053112
+====================================================== 
+Varying the Mutation Rate : 1.9
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 1.9, 500, 0, 1, 0, 1) => Configuration 3 
+Best initial sol: 22660915.870452467
+iteration: 0 best: 22633057.91689763
+iteration: 1 best: 22436292.594687574
+iteration: 2 best: 22385668.609297827
+iteration: 9 best: 22165727.67130369
+iteration: 15 best: 22162379.563909333
+iteration: 18 best: 22033954.310350727
+iteration: 21 best: 21802917.232596308
+iteration: 41 best: 21765200.916769933
+iteration: 46 best: 21596308.032621954
+iteration: 67 best: 21123054.861923005
+iteration: 74 best: 20891463.828281227
+iteration: 78 best: 20595106.04091565
+iteration: 87 best: 20426831.740360815
+iteration: 88 best: 19810748.645918015
+iteration: 181 best: 19796978.110894058
+iteration: 182 best: 19769410.59950721
+iteration: 205 best: 19652054.31097132
+iteration: 218 best: 19503209.87576833
+iteration: 237 best: 19433005.9251622
+iteration: 257 best: 19349754.223128513
+iteration: 261 best: 19189414.32471056
+iteration: 348 best: 19122637.86260563
+iteration: 349 best: 19091115.968168423
+iteration: 358 best: 18888289.084180944
+iteration: 410 best: 18257690.3062007
+Total iterations: 500
+Best Solution: 18257690.3062007
+====================================================== 
