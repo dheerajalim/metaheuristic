@@ -104,26 +104,59 @@ class BasicTSP:
     def stochasticUniversalSampling(self):
         """
         Implementation of Stochastic Universal Sampling
-        :return: Two selected parents from the mating pool generated using selection probability
+        :return: Returns the mating pool as per the SUS
         """
+        matingPool_sus = {}
+        fitness_list = []
+        minimize_fitness_list = []
+        selection_probability_fitness_list = []
 
-        N_parent = 2  # Need to select two Parents
-        distance_pointers = 1 / N_parent
-        indA_pointer = random.uniform(0, distance_pointers)  # Selection of random starting pointer
-        indB_pointer = indA_pointer + distance_pointers  # Selection of 2nd pointer
+        # Creating a list to hold the fitness of each ind in population
+        for ind_i in self.population:
+            fitness_list.append(ind_i.getFitness())
 
-        parent_test = True
-        for pointer in self.ind_selection_range:
-            if parent_test:
-                if indA_pointer < pointer:
-                    parent_a = self.matingPool[self.ind_selection_range.index(pointer)]
-                    parent_test = False
+        # Getting the max fitness from the list of ind fitness
+        max_fitness = max(fitness_list) + 1  # Adding 1 to avoid value to turn 0 on subtraction
 
-            if indB_pointer < pointer:
-                parent_b = self.matingPool[self.ind_selection_range.index(pointer)]
-                break
+        # Minimizing the fitness of ind
+        for fitness in fitness_list:
+            minimize_fitness_list.append(max_fitness - fitness)
 
-        return [parent_a, parent_b]
+        fitness_sum = sum(minimize_fitness_list)
+
+        # Generating the Selection probability for the individual
+        for fitness in minimize_fitness_list:
+            selection_probability_fitness_list.append(fitness / fitness_sum)
+
+        # Generating the selection range of the ind
+        self.ind_selection_range = [selection_probability_fitness_list[0]]
+
+        for fitness in range(1, len(selection_probability_fitness_list)):
+            self.ind_selection_range.append(
+                self.ind_selection_range[fitness - 1] + selection_probability_fitness_list[fitness])
+
+        # Initializing the matingpool dictionary with individual as value, range as key
+
+        for i in range(0, len(self.population)):
+            matingPool_sus[self.ind_selection_range[i]] = self.population[i]
+
+        # Creating pointers on the ruler
+        N = 1 / len(self.population)
+
+        # Choosing the random start point
+        starting_point = random.uniform(0, N)
+
+        # Creating the list of pointers to be on list
+        pointer_list = [starting_point]
+        for i in range(1, len(self.population)):
+            pointer_list.append(pointer_list[i - 1] + N)
+
+        # Generating the mating pool as per the pointers on the ruler
+        for item in pointer_list:
+            for k, v in matingPool_sus.items():
+                if item <= k:
+                    self.matingPool.append(v)
+                    break
 
     def uniformCrossover(self, indA, indB):
 
@@ -163,6 +196,7 @@ class BasicTSP:
         for i in range(0, self.genSize):
             child_a.genes[i] = offspring_A[i]
             child_b.genes[i] = offspring_B[i]
+
         return child_a, child_b
 
     def pmxCrossover(self, indA, indB):
@@ -369,43 +403,13 @@ class BasicTSP:
         if self.selection == 0 : Mating pool generated using Random Selection
         if self.selection == 1: Mating pool generated using Stochastic Universal Sampling
         """
+        self.matingPool = []
         if self.selection == 0:
-            self.matingPool = []
             for ind_i in self.population:
                 self.matingPool.append(ind_i.copy())
 
         elif self.selection == 1:
-            self.matingPool = []
-            for ind_i in self.population:
-                self.matingPool.append(ind_i.copy())
-
-            fitness_list = []
-            minimize_fitness_list = []
-            selection_probability_fitness_list = []
-
-            # Creating a list to hold the fitness of each ind in population
-            for ind_i in self.matingPool:
-                fitness_list.append(ind_i.getFitness())
-
-            # Getting the max fitness from the list of ind fitness
-            max_fitness = max(fitness_list) + 1  # Adding 1 to avoid value to turn 0 on subtraction
-
-            # Minimizing the fitness of ind
-            for fitness in fitness_list:
-                minimize_fitness_list.append(max_fitness - fitness)
-
-            fitness_sum = sum(minimize_fitness_list)
-
-            # Generating the Selection probability for the individual
-            for fitness in minimize_fitness_list:
-                selection_probability_fitness_list.append(fitness / fitness_sum)
-
-            # Generating the selection range of the ind
-            self.ind_selection_range = [selection_probability_fitness_list[0]]
-
-            for fitness in range(1, len(selection_probability_fitness_list)):
-                self.ind_selection_range.append(
-                    self.ind_selection_range[fitness - 1] + selection_probability_fitness_list[fitness])
+            self.stochasticUniversalSampling()
 
     def newGeneration(self):
         """
@@ -426,11 +430,7 @@ class BasicTSP:
             """
             Random Selection or SUS selection
             """
-            if self.selection == 0:
-                partnerA, partnerB = self.randomSelection()
-
-            elif self.selection == 1:
-                partnerA, partnerB = self.stochasticUniversalSampling()
+            partnerA, partnerB = self.randomSelection()
 
             """
             Uniform Crossover or PMX crossover

@@ -1,0 +1,105 @@
+Varying the Heuristic approach , Initial population : 50% initialized heuristically, 50% Randomly
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 4126111.863870551
+Total iterations: 500
+Best Solution: 4126111.863870551
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 500
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 500
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 1000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 1000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 1000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 1000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 1000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 1500
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 2000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 2000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 2000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 2000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 3992001.979969066
+Total iterations: 3000
+Best Solution: 3992001.979969066
+====================================================== 
+Varying the Heuristic approach 50% initialized heuristically
+ ==================================
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 4126111.863870551
+Total iterations: 3000
+Best Solution: 4126111.863870551
+====================================================== 

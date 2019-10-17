@@ -1,0 +1,128 @@
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 0, 0, 0, 0) => Configuration 1 
+Best initial sol: 22660915.870452467
+iteration: 1 best: 22575805.310351096
+iteration: 2 best: 22384124.58659526
+iteration: 2 best: 21879392.23622143
+iteration: 146 best: 21863425.109339617
+iteration: 223 best: 21834213.447653532
+iteration: 377 best: 21825705.565501373
+Total iterations: 500
+Best Solution: 21825705.565501373
+====================================================== 
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 0, 0, 1, 1) => Configuration 2 
+Best initial sol: 22847093.082295213
+iteration: 1 best: 22808902.487161294
+iteration: 1 best: 22755466.652624987
+iteration: 8 best: 22596327.39771201
+iteration: 8 best: 21913952.422215622
+iteration: 118 best: 21788078.984594848
+iteration: 118 best: 21674639.242117763
+iteration: 216 best: 21663320.33557625
+Total iterations: 500
+Best Solution: 21663320.33557625
+====================================================== 
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 0, 1, 0, 1) => Configuration 3 
+Best initial sol: 22886068.64860538
+iteration: 0 best: 22516461.110894207
+iteration: 1 best: 22453699.268370792
+iteration: 2 best: 22402856.100089893
+iteration: 3 best: 22328000.83147648
+iteration: 6 best: 22289146.293337077
+iteration: 12 best: 22157634.46091007
+iteration: 14 best: 22111604.861584924
+iteration: 14 best: 22111537.444386072
+iteration: 17 best: 22092721.274437405
+iteration: 18 best: 22012149.77696025
+iteration: 21 best: 21732993.8092514
+iteration: 43 best: 21237337.365332413
+iteration: 70 best: 21183760.479646575
+iteration: 130 best: 21123242.82324797
+iteration: 131 best: 21082321.30993389
+iteration: 150 best: 21024091.51920423
+iteration: 168 best: 20931573.058328267
+iteration: 173 best: 20777675.48475249
+iteration: 177 best: 20631727.670333944
+iteration: 189 best: 20504870.861805994
+iteration: 199 best: 20394066.173724215
+iteration: 214 best: 20126734.232214708
+iteration: 225 best: 19790874.29048226
+iteration: 248 best: 19652598.86416818
+iteration: 255 best: 19337298.78953982
+iteration: 258 best: 19044557.56750981
+iteration: 280 best: 18754220.92965149
+iteration: 290 best: 18517291.30118629
+iteration: 302 best: 18503786.43576676
+iteration: 333 best: 18212514.85577832
+iteration: 349 best: 18193966.64865517
+iteration: 352 best: 17878371.623039637
+iteration: 373 best: 17659689.942933306
+iteration: 387 best: 17649688.743698742
+iteration: 388 best: 17444678.92116526
+iteration: 395 best: 17375223.49338467
+iteration: 403 best: 17357293.32798947
+iteration: 403 best: 17059174.123856038
+iteration: 404 best: 16860576.46273848
+iteration: 408 best: 16594199.240656896
+iteration: 438 best: 16451141.700147297
+iteration: 442 best: 15991990.434037982
+iteration: 459 best: 15972203.155799385
+iteration: 462 best: 15781534.15930021
+iteration: 477 best: 15744810.325517647
+iteration: 492 best: 15736331.57344456
+iteration: 492 best: 15542988.732507162
+Total iterations: 500
+Best Solution: 15542988.732507162
+====================================================== 
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 0, 1, 1, 1) => Configuration 4 
+Best initial sol: 23012973.680887677
+iteration: 0 best: 22776783.25554856
+iteration: 0 best: 22319684.403304577
+iteration: 8 best: 21767351.0706664
+Total iterations: 500
+Best Solution: 21767351.0706664
+====================================================== 
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 0, 1, 1, 0) => Configuration 5 
+Best initial sol: 22333309.479640435
+iteration: 6 best: 22308523.586315416
+iteration: 9 best: 21882983.86831303
+Total iterations: 500
+Best Solution: 21882983.86831303
+====================================================== 
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 0, 1, 0, 0) => Configuration 6 
+Best initial sol: 22923572.532410886
+iteration: 1 best: 22899676.43871158
+iteration: 2 best: 22895660.77738882
+iteration: 3 best: 22751499.327354733
+iteration: 4 best: 22542709.409422938
+iteration: 5 best: 21917423.540461235
+iteration: 41 best: 21702575.285882667
+iteration: 78 best: 21688546.45471455
+iteration: 79 best: 21586688.29835017
+iteration: 99 best: 21440111.19600911
+iteration: 102 best: 21082362.514791094
+iteration: 111 best: 20772797.127014495
+iteration: 156 best: 20647332.288178287
+iteration: 157 best: 20259170.888847996
+iteration: 165 best: 20187322.1262012
+iteration: 171 best: 20085942.10267234
+iteration: 173 best: 20065326.86047129
+iteration: 173 best: 19525736.75131744
+iteration: 348 best: 19377748.041368447
+iteration: 464 best: 19330987.525509275
+iteration: 471 best: 19241970.27061434
+iteration: 483 best: 19209204.63195392
+iteration: 494 best: 19199746.41837105
+iteration: 499 best: 18552891.310645808
+Total iterations: 500
+Best Solution: 18552891.310645808
+====================================================== 
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 1, 1) => Configuration 7 
+Best initial sol: 4146917.8682248485
+Total iterations: 500
+Best Solution: 4146917.8682248485
+====================================================== 
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 1, 1, 0, 0) => Configuration 8 
+Best initial sol: 4126111.863870551
+Total iterations: 500
+Best Solution: 4126111.863870551
+====================================================== 

@@ -1,0 +1,21 @@
+ga = BasicTSP(inst-0.tsp, 100, 0.1, 500, 0, 1, 0, 1) => Configuration 3 
+Best initial sol: 3992001.979969066
+Total iterations: 500
+Best Solution: 3992001.979969066
+====================================================== 
+Best initial sol: 4126111.863870551
+Total iterations: 500
+Best Solution: 4126111.863870551
+====================================================== 
+Best initial sol: 3992001.979969066
+Total iterations: 500
+Best Solution: 3992001.979969066
+====================================================== 
+Best initial sol: 4126111.863870551
+Total iterations: 500
+Best Solution: 4126111.863870551
+====================================================== 
+Best initial sol: 3992001.979969066
+Total iterations: 500
+Best Solution: 3992001.979969066
+====================================================== 
