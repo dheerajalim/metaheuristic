@@ -63,6 +63,7 @@ class SatChecker:
         unsat_clauses = [index for index, unsat_clause in enumerate(self.clause_list_or) if unsat_clause is False]
         if self.clause_list_and:
             print('The provided solution in valid')
+            return True # For Unittest checking
         else:
             print('The provided solution is invalid')
             print('The Unsatisfied clauses are :')
@@ -70,10 +71,11 @@ class SatChecker:
 
             for index in unsat_clauses:
                 print(self.clause_list_clauses[index])
+            return False
 
 
 if __name__ == '__main__':
-    cnf_instance = 'Lab-data/Lab-data/Inst/uf20-04.cnf'
-    solution_file = 'Lab-data/Lab-data/sols/2.txt'
+    cnf_instance = 'Lab-data/Lab-data/Inst/uf20-06.cnf'
+    solution_file = 'Lab-data/Lab-data/sols/5.txt'
     sat_checker = SatChecker(cnf_instance,solution_file)
     sat_checker.solution()

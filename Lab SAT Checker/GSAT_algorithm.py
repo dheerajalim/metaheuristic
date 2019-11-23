@@ -84,12 +84,13 @@ class GsatAlgo:
 
     def gsat_solution(self, cnf_formula, max_tries, max_flips):
         for try_sol in range(0, max_tries):
-            a = self.generate_solution()
+            a = self.generate_solution()  # Here we will generate the random solution in the form of Booleans
 
             initial_flipped = 0
             for flip in range(0, max_flips):
 
-                if self.clause_satisfation(a):
+                if self.clause_satisfation(a):      # Here we will be returned with the and of all clauses
+                    ''' Generating the solution by changing the booleans to actual variable '''
                     final_sol_list = [i for i in range(1, self.variable_number + 1)]
                     for item in range(0, len(a)):
                         if a[item] is False:
@@ -120,6 +121,7 @@ if __name__ == '__main__':
     cnf_instance = 'Lab-data/Lab-data/Inst/uf20-06.cnf'
     gsat_algo = GsatAlgo(cnf_instance)
     cnf_formula = gsat_algo.filter_cnf_instance()
+    # print(cnf_formula)  # Contains the cleaned list of cnf formulas
     result = gsat_algo.gsat_solution(cnf_formula, max_tries, max_flips)
     print(result)
     gsat_algo.solution_txt()
