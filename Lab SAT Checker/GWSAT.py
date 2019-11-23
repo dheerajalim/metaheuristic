@@ -1,3 +1,12 @@
+"""
+Author: Dheeraj Alimchandani
+
+Date : 13-11-2019
+
+File : GWSAT.py
+
+Usage : GWSAT Algorithm
+"""
 
 import random
 random.seed(2)
@@ -53,7 +62,7 @@ class GWSAT:
         for try_sol in range(0, max_tries):
 
             initial_solution = self.generate_solution(preprocess)  # Here we will generate the random solution in the form of Booleans
-            print('Initial Solution :', initial_solution)
+            # print('Initial Solution :', initial_solution)
 
             for flip in range(0, max_flips):
 
@@ -83,7 +92,7 @@ class GWSAT:
                     # Now we will find all the clauses which are unsatisfied
                     for clause_index in all_index_unsat_clauses:
                         cnf_formula_unsat.append(cnf_formula[clause_index])  # List of UNSAT clauses
-                    print(r)
+
                     if r < wp:
                         # getting a flat list of all variables in the unsat clauses
                         flat_unsatisified_clauses = [item for sublist in cnf_formula_unsat for item in sublist]

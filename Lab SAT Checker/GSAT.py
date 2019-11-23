@@ -3,7 +3,7 @@ Author: Dheeraj Alimchandani
 
 Date : 13-11-2019
 
-File : preprocessing.py
+File : GSAT.py
 
 Usage : GSAT solution
 """
@@ -92,7 +92,7 @@ class GSAT:
 
         # print(all_clauses)
 
-        print('Else Loop All Clauses', all_clauses)
+        # print('Else Loop All Clauses', all_clauses)
         # for index, value in enumerate(all_clauses):
         #     if not value:
         #         all_index_unsat_clauses.append(index)  # Index of Unsat clauses
@@ -102,12 +102,12 @@ class GSAT:
         # # Now we will find all the clauses which are unsatisfied
         # for clause_index in all_index_unsat_clauses:
         #     cnf_formula_unsat.append(cnf_formula[clause_index])  # List of UNSAT clauses
-        print('UNSAT Clauses: ', cnf_formula_unsat)
-        print('Sol List: ',sol_list_init)
+        # print('UNSAT Clauses: ', cnf_formula_unsat)
+        # print('Sol List: ',sol_list_init)
 
         # now we will calculate the number of clauses in which each variable is present (Positive gain)
         positive_gain = self.positive_gain(sol_list_init, cnf_formula_unsat)
-        print('positive count : ', positive_gain)
+        # print('positive count : ', positive_gain)
 
         for index, value in enumerate(all_clauses):
             if value:
@@ -143,6 +143,6 @@ class GSAT:
             net_gain_index = max_netgain_list[0]
 
         flipped_value_index = net_gain_index
-        print(flipped_value_index)
+        # print(flipped_value_index)
         # exit()
         return flipped_value_index
