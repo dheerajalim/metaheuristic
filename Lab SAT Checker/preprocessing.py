@@ -8,16 +8,12 @@ File : preprocessing.py
 Usage : Preprocesing the CNF File
 """
 
-# import random
-# random.seed(2)
-
 
 class CnfPreprocess:
 
     def __init__(self, cnf_instance):
 
         self.variable_number = 0
-        # self.sol_list_init = []
 
         with open(cnf_instance, 'r') as sat_file:
             self.variable_number = [clause.strip().split() for clause in sat_file.readlines() if clause.startswith('p')]
